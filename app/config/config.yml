@@ -1,6 +1,9 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: "@IphpCoreBundle/Resources/config/security.yml" }
+    - { resource: "@IphpCoreBundle/Resources/config/config.yml" }
+    - { resource: "@IphpContentBundle/Resources/config/config.yml" }
 
 framework:
     #esi:             ~
@@ -55,6 +58,16 @@ doctrine:
     orm:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
+#        default_entity_manager: default
+#        entity_managers:
+#          event_db:
+#            connection:   event_db
+#            mappings:
+#                MyFirmEventManagerBundle: ~
+#          default:
+#            connection:   user_config_db
+#            mappings:
+#                MyFirmUserManagerBundle:  ~
 
 # Swiftmailer Configuration
 swiftmailer:
