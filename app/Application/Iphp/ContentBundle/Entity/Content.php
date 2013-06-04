@@ -35,6 +35,8 @@ class Content extends BaseContent
      */
     protected $id;
 
+    
+    
     /**
      * Get id
      *
@@ -44,4 +46,23 @@ class Content extends BaseContent
     {
         return $this->id;
     }
+    
+    public function __toString()
+    {
+        if (empty($this->title))
+            return 'Добавить новый';
+        return $this->getTitle();
+    }
+    
+    /**
+     * Get title
+     *
+     * @return string $title
+     */
+//    public function getTitle()
+//    {
+//        if (empty($this->title))
+//            return 'Please enter content title';
+//        return $this->title;
+//    }
 }

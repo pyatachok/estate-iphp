@@ -3,3 +3,11 @@ _main:
  
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    
+_iphp_rubrics:
+    resource: .
+    type: iphp_rubric
+
+#_welcome:
+#    pattern:  /
+#    defaults: { _controller: AcmeDemoBundle:Welcome:index }
