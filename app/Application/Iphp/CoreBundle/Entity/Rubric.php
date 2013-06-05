@@ -37,4 +37,16 @@ class Rubric extends BaseRubric
     {
         return $this->id;
     }
+    
+//    public function setFullPath($fullPath)
+//    {
+////        error_log($fullPath);
+//        parent::setFullPath($fullPath);
+//    }
+//    
+//    public function setPath($path)
+//    {
+////        error_log($this->getParent()->getPath());
+//        parent::setPath($path);
+//    }
 }
