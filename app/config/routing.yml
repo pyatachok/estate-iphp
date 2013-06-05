@@ -11,3 +11,6 @@ _iphp_rubrics:
 #_welcome:
 #    pattern:  /
 #    defaults: { _controller: AcmeDemoBundle:Welcome:index }
+
+ad_manager_publisher:
+    resource: "@AdManagerPublisherBundle/Resources/config/routing.yml"

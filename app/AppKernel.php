@@ -8,5 +8,14 @@ class AppKernel extends IphpKernel
     {
         $loader->load(__DIR__ . '/config/config_' . $this->getEnvironment() . '.yml');
     }
+    
+    public function registerBundles()
+    {
+        $bundles = parent::registerBundles();
+        
+        array_push($bundles, new AdManager\PublisherBundle\AdManagerPublisherBundle());
+        
+        return $bundles;
+    }
  
 }

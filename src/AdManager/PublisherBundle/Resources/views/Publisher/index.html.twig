@@ -1,0 +1,38 @@
+ {# src/AdManager/PublisherBundle/Resources/views/Publisher/index.html.twig #}
+ {% extends 'AdManagerPublisherBundle::base.html.twig' %}
+
+ {% block title %}Publishers{% endblock %}
+ 
+ {% block stylesheets %}
+    {{ parent() }}
+ {% endblock %}
+ {% block header_title %}
+    {{ parent() }}
+ {% endblock %}
+ {% block body %}
+    <table class="table table-hover">
+	<thead>
+	    <tr>
+		<th>#</th>
+		<th>Publisher</th>
+		<th>Is Deleted</th>
+		<th>Actions</th>
+	    </tr>
+	</thead>
+	<tbody>
+	{% for publisher in publishers %}
+	<tr {% if publisher.deleted == 1 %} {{"class='warning'"}} {% endif %} >
+	    <td>{{publisher.id}}</td>
+	    <td><a href="{{ path('publisher_show', {'id' : publisher.id }) }}">{{ publisher.name }}</a></td>
+	    <td>{% if publisher.deleted == 1 %}Yes{%else%}No{% endif %}</td>
+	    <td>
+		<a class="btn btn-small" href="{{ path('publisher_edit', {'id' : publisher.id }) }}">Edit</a>
+		{% if publisher.deleted ==0 %}
+		    <a class="btn btn-small" href="{{ path('publisher_delete', {'id' : publisher.id }) }}">Delete</a>
+		{% endif %}
+	    </td>
+	</tr>
+	{% endfor %}
+	</tbody>
+    </table>
+ {% endblock %}

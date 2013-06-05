@@ -1,0 +1,27 @@
+ {# src/AdManager/PublisherBundle/Resources/views/Field/index.html.twig #}
+ {% extends 'AdManagerPublisherBundle::base.html.twig' %}
+
+ {% block title %}Draw Field {{ field.id }}{% endblock %}
+ {% block body %}
+ <div class='field-details'>
+     {% include 'AdManagerPublisherBundle:Field:fieldDetails.html.twig' with {'field' : field} %}
+ </div>
+ <div class='related-fields'>
+     <p>Related Fields</p>
+     {% for related_field in field.RelatedFields %}
+	<div class='field-details'>
+	    {% include 'AdManagerPublisherBundle:Field:fieldDetails.html.twig' with {'related_field' : related_field, 'field' : null } %}
+	</div>
+ 
+     {% endfor %}
+ </div>
+ <div class='related-fields'>
+     <p>Parent Fields</p>
+     {% for related_field in field.ParentFields %}
+	<div class='field-details'>
+	    {% include 'AdManagerPublisherBundle:Field:fieldDetails.html.twig' with {'related_field' : related_field, 'field' : null } %}
+	</div>
+ 
+     {% endfor %}
+ </div>
+ {% endblock %}
