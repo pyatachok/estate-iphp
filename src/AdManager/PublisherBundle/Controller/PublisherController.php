@@ -21,7 +21,12 @@ class PublisherController extends Controller
 	    throw $this->createNotFoundException('No publishers found');
 	}
 
-        return $this->render('AdManagerPublisherBundle:Publisher:index.html.twig', array('publishers' => $publishers));
+        return $this->render('AdManagerPublisherBundle:Publisher:index.html.twig', 
+                array(
+                    'publishers' => $publishers,
+                    'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
+                    'admin_pool'    => $this->container->get('sonata.admin.pool')
+            ));
     }
     
     public function showAction($id)
