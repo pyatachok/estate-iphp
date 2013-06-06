@@ -40,7 +40,12 @@ class PublisherController extends Controller
 	}
 	
 	
-        return $this->render('AdManagerPublisherBundle:Publisher:show.html.twig', array('publisher' => $publisher));
+        return $this->render('AdManagerPublisherBundle:Publisher:show.html.twig', 
+                array(
+                    'publisher' => $publisher,
+                    'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
+                    'admin_pool'    => $this->container->get('sonata.admin.pool')
+                ));
     }
     
     
@@ -69,6 +74,8 @@ class PublisherController extends Controller
 	
 	return $this->render('AdManagerPublisherBundle:Publisher:add.html.twig', array(
             'form' => $form->createView(),
+            'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
+            'admin_pool'    => $this->container->get('sonata.admin.pool')
         ));
     }
 
@@ -110,6 +117,8 @@ class PublisherController extends Controller
 		array(
 		    'publisher' => $publisher,
 		    'form' =>  $form->createView(),
+                    'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
+                    'admin_pool'    => $this->container->get('sonata.admin.pool')
 		    ));
     }
     
@@ -146,6 +155,8 @@ class PublisherController extends Controller
 		array(
 		    'publisher' => $publisher,
 		    'form' =>  $editForm->createView(),
+                    'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
+                    'admin_pool'    => $this->container->get('sonata.admin.pool')
 		    ));
     }
 }

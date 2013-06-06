@@ -1,47 +1,19 @@
 {# src/AdManager/PublisherBundle/Resources/views/base.html.twig #}
 {% extends 'IphpCoreBundle:Admin:standard_layout.html.twig' %} 
 
-{% block title %}
-    Test Application
-{% endblock %}
-
-{% block top_bar_after_nav %}
-
-    {% if app.security.token and is_granted('ROLE_SONATA_ADMIN') %}
-
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Объявления <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                {% for admin in group.items %}
-                    {% if admin.hasroute('list') and admin.isGranted('LIST') %}
-                        <li><a href="{{ admin.generateUrl('list')}}">{{ admin.label|trans({}, admin.translationdomain) }}</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        </li>
-
-    {% endif %}
-{% endblock %}
-
 {% block sonata_admin_content %}
-{% block sidebar %}
-    <ul class="nav nav-list">
-        <li><a href="{{ path('ad_manager_publisher_homepage') }}"><i class="icon-user"></i> Publishers</a></li>
+
+    {% block sidebar %}
         <ul class="nav nav-list">
             <li><a href="{{ path('add_publisher') }}">Add Publisher</a></li>
-        </ul>
-        <li><a href="{{ path('ad_manager_ad_homepage') }}"><i class="icon-list-alt"></i> Ads</a></li>
-        <ul class="nav nav-list">
             <li><a href="{{ path('add_ad') }}">Add Ad</a></li>
-        </ul>
-        <li><a href="{{ path('ad_manager_field_homepage') }}"><i class="icon-pencil"></i> Fields</a></li>
-        <ul class="nav nav-list">
             <li><a href="{{ path('add_field') }}">Add Field</a></li>
         </ul>
-    </ul>
-{% endblock %}
-        {%block body%}
-        {% endblock %}
+    {% endblock %}
+
+    {%block body%}
+    {% endblock %}
+
 {% endblock %}
                 
 {% block javascripts %}

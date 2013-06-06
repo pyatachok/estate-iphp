@@ -20,7 +20,12 @@ class FieldController extends Controller
 	    throw $this->createNotFoundException('No fields found');
 	}
 
-        return $this->render('AdManagerPublisherBundle:Field:index.html.twig', array('fields' => $fields));
+        return $this->render('AdManagerPublisherBundle:Field:index.html.twig', 
+                array(
+                    'fields' => $fields,
+                    'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
+                    'admin_pool'    => $this->container->get('sonata.admin.pool')
+                ));
     }
     
     public function showAction($id)
@@ -34,7 +39,12 @@ class FieldController extends Controller
 	}
 	
 	
-        return $this->render('AdManagerPublisherBundle:Field:show.html.twig', array('field' => $field));
+        return $this->render('AdManagerPublisherBundle:Field:show.html.twig', 
+                array(
+                    'field' => $field,
+                    'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
+                    'admin_pool'    => $this->container->get('sonata.admin.pool')
+                ));
     }
     
     
@@ -61,6 +71,8 @@ class FieldController extends Controller
 	
 	return $this->render('AdManagerPublisherBundle:Field:add.html.twig', array(
             'form' => $form->createView(),
+            'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
+                    'admin_pool'    => $this->container->get('sonata.admin.pool')
         ));
     }
 
@@ -101,6 +113,8 @@ class FieldController extends Controller
 		array(
 		    'field' => $field,
 		    'form' =>  $form->createView(),
+                    'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
+                    'admin_pool'    => $this->container->get('sonata.admin.pool')
 		    ));
     }
     
@@ -137,6 +151,8 @@ class FieldController extends Controller
 		array(
 		    'field' => $field,
 		    'form' =>  $editForm->createView(),
+                    'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
+                    'admin_pool'    => $this->container->get('sonata.admin.pool')
 		    ));
     }
     

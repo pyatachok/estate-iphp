@@ -21,7 +21,11 @@ class AdController extends Controller
 	    throw $this->createNotFoundException('No ads found');
 	}
 
-	return $this->render('AdManagerPublisherBundle:Ad:index.html.twig', array('ads' => $ads));
+	return $this->render('AdManagerPublisherBundle:Ad:index.html.twig', array(
+            'ads' => $ads,
+            'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
+                    'admin_pool'    => $this->container->get('sonata.admin.pool')
+            ));
     }
     
     public function showAction($id)
@@ -35,7 +39,12 @@ class AdController extends Controller
 	}
 	
 	
-        return $this->render('AdManagerPublisherBundle:Ad:show.html.twig', array('ad' => $ad));
+        return $this->render('AdManagerPublisherBundle:Ad:show.html.twig', 
+                array(
+                    'ad' => $ad,
+                    'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
+                    'admin_pool'    => $this->container->get('sonata.admin.pool')
+                ));
     }
     
     
@@ -64,6 +73,8 @@ class AdController extends Controller
 	
 	return $this->render('AdManagerPublisherBundle:Ad:add.html.twig', array(
             'form' => $form->createView(),
+            'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
+            'admin_pool'    => $this->container->get('sonata.admin.pool')
         ));
     }
     
@@ -104,6 +115,8 @@ class AdController extends Controller
 		array(
 		    'ad' => $ad,
 		    'form' =>  $form->createView(),
+                    'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
+                    'admin_pool'    => $this->container->get('sonata.admin.pool')
 		    ));
     }
     
@@ -168,6 +181,8 @@ class AdController extends Controller
 		array(
 		    'ad' => $ad,
 		    'form' =>  $editForm->createView(),
+                    'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
+                    'admin_pool'    => $this->container->get('sonata.admin.pool')
 		    ));
     }
     
