@@ -75,7 +75,7 @@ class PublisherController extends Controller
 	return $this->render('AdManagerPublisherBundle:Publisher:add.html.twig', array(
             'form' => $form->createView(),
             'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
-            'admin_pool'    => $this->container->get('sonata.admin.pool')
+            'admin_pool'    => $this->container->get('sonata.admin.pool'),
         ));
     }
 
@@ -142,7 +142,7 @@ class PublisherController extends Controller
 
 	    if ($editForm->isValid()) {
 		$publisher = $editForm->getData();
-		$publisher->setDeleted(0);
+//		$publisher->setDeleted(0);
 		$em->persist($publisher);
 		$em->flush();
 		
@@ -158,5 +158,10 @@ class PublisherController extends Controller
                     'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
                     'admin_pool'    => $this->container->get('sonata.admin.pool')
 		    ));
+    }
+    
+    function getPaginator()
+    {
+        return $this->get('knp_paginator');
     }
 }

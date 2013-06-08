@@ -1,15 +1,18 @@
 {# src/AdManager/PublisherBundle/Resources/views/base.html.twig #}
 {% extends 'IphpCoreBundle:Admin:standard_layout.html.twig' %} 
 
+
+
 {% block sonata_admin_content %}
 
+{{ parent() }}
+
+{% block menu_left%}
     {% block sidebar %}
-        <ul class="nav nav-list">
-            <li><a href="{{ path('add_publisher') }}">Add Publisher</a></li>
-            <li><a href="{{ path('add_ad') }}">Add Ad</a></li>
-            <li><a href="{{ path('add_field') }}">Add Field</a></li>
-        </ul>
     {% endblock %}
+
+{% endblock menu_left %}
+
 
     {%block body%}
     {% endblock %}

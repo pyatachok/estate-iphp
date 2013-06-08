@@ -9,6 +9,10 @@
     <link href="{{ asset('bundles/admanagerpublisher/css/main.css') }}" type="text/css" rel="stylesheet" />
  {% endblock %}
  
+{%block actions %}
+    <a class="btn sonata-action-element" href="{{ path('add_field') }}"> <i class="icon-plus"></i> Добавить новый</a>
+{% endblock %}
+    
  {% block body %}
     <table class="table table-hover">
 	<thead>

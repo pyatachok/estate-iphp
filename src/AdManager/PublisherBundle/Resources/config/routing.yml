@@ -2,6 +2,7 @@ ad_manager_publisher_homepage:
     pattern:  /admin/publishers
     defaults: { _controller: AdManagerPublisherBundle:Publisher:index }
 
+
 publisher_show:
     pattern:  /admin/publisher/show/{id}
     defaults: { _controller: AdManagerPublisherBundle:Publisher:show }

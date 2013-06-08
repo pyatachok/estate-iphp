@@ -14,16 +14,17 @@ class AdFieldValueType extends AbstractType
  
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+	$builder->add('field', 'entity', array(
+	    'class' => 'AdManagerPublisherBundle:Field',
+	    'property' => 'name',
+	));
+        
         $builder->add('value', 'textarea', array(
 	    'required' => true, 
 	    'empty_data' => FALSE,
 	    'max_length' => 2048,
 	    ));
 	
-	$builder->add('field', 'entity', array(
-	    'class' => 'AdManagerPublisherBundle:Field',
-	    'property' => 'name',
-	));
 	$builder->add('id', 'hidden', array('required' => false, 'label' => false));
 	
     }
