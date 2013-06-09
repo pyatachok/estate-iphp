@@ -22,7 +22,7 @@ class AdController extends Controller
     {
 	$ads = $this->getDoctrine()
 		->getRepository('AdManagerPublisherBundle:Ad')
-		->findBy(array(), array('creation_date' => 'DESC'))
+		->findBy(array(), array('deleted' => 'ASC', 'creation_date' => 'DESC'))
 		;
 	if (!$ads) {
 	    throw $this->createNotFoundException('No ads found');
