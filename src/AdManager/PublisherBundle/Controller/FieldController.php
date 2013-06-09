@@ -10,6 +10,16 @@ use AdManager\PublisherBundle\Form\FieldType;
 
 class FieldController extends Controller
 {
+    private $_breadcrumbs = array(
+        'field' => array('uri' => '','label' => 'Список полей объявлений'),
+        'add' => array('uri' => '','label' => 'Добавление'),
+        'edit' => array('uri' => '','label' => 'Редактирование'),
+//        's' => 'Список редакторов объявлений',
+    );
+    
+
+    
+
     public function indexAction()
     {
 	$fields = $this->getDoctrine()
@@ -24,7 +34,8 @@ class FieldController extends Controller
                 array(
                     'fields' => $fields,
                     'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
-                    'admin_pool'    => $this->container->get('sonata.admin.pool')
+                    'admin_pool'    => $this->container->get('sonata.admin.pool'),
+                    'breadcrumbs' => $this->getBreadcrumb(),
                 ));
     }
     
@@ -43,7 +54,8 @@ class FieldController extends Controller
                 array(
                     'field' => $field,
                     'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
-                    'admin_pool'    => $this->container->get('sonata.admin.pool')
+                    'admin_pool'    => $this->container->get('sonata.admin.pool'),
+                    'breadcrumbs' => $this->getBreadcrumb(),
                 ));
     }
     
@@ -72,7 +84,8 @@ class FieldController extends Controller
 	return $this->render('AdManagerPublisherBundle:Field:add.html.twig', array(
             'form' => $form->createView(),
             'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
-                    'admin_pool'    => $this->container->get('sonata.admin.pool')
+            'admin_pool'    => $this->container->get('sonata.admin.pool'),
+            'breadcrumbs' => $this->getBreadcrumb(),
         ));
     }
 
@@ -114,7 +127,8 @@ class FieldController extends Controller
 		    'field' => $field,
 		    'form' =>  $form->createView(),
                     'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
-                    'admin_pool'    => $this->container->get('sonata.admin.pool')
+                    'admin_pool'    => $this->container->get('sonata.admin.pool'),
+                    'breadcrumbs' => $this->getBreadcrumb(),
 		    ));
     }
     
@@ -152,8 +166,22 @@ class FieldController extends Controller
 		    'field' => $field,
 		    'form' =>  $editForm->createView(),
                     'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
-                    'admin_pool'    => $this->container->get('sonata.admin.pool')
+                    'admin_pool'    => $this->container->get('sonata.admin.pool'),
+                    'breadcrumbs' => $this->getBreadcrumb(),
 		    ));
+    }
+    
+    function getBreadcrumb() {
+        $this->_breadcrumbs['field']['uri'] = $this->generateUrl('ad_manager_field_homepage');
+        $path_info = $this->getRequest()->getPathInfo();
+        $breadcrumbs = array();
+        foreach ($this->_breadcrumbs as $key => $breadcrumb)
+        {
+            if (preg_match("#".$key."#", $path_info)) {
+                $breadcrumbs[] = $breadcrumb;
+            }
+        }
+        return $breadcrumbs;
     }
     
 }

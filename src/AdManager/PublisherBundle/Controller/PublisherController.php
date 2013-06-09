@@ -10,6 +10,13 @@ use AdManager\PublisherBundle\Form\PublisherType;
 
 class PublisherController extends Controller
 {
+    private $_breadcrumbs = array(
+        'publisher' => array('uri' => '','label' => 'Список редакторов объявлений'),
+        'add' => array('uri' => '','label' => 'Добавление'),
+        'edit' => array('uri' => '','label' => 'Редактирование'),
+//        's' => 'Список редакторов объявлений',
+    );
+    
     public function indexAction()
     {
 	$publishers = $this->getDoctrine()
@@ -25,7 +32,8 @@ class PublisherController extends Controller
                 array(
                     'publishers' => $publishers,
                     'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
-                    'admin_pool'    => $this->container->get('sonata.admin.pool')
+                    'admin_pool'    => $this->container->get('sonata.admin.pool'),
+                    'breadcrumbs' => $this->getBreadcrumb(),
             ));
     }
     
@@ -44,7 +52,8 @@ class PublisherController extends Controller
                 array(
                     'publisher' => $publisher,
                     'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
-                    'admin_pool'    => $this->container->get('sonata.admin.pool')
+                    'admin_pool'    => $this->container->get('sonata.admin.pool'),
+                    'breadcrumbs' => $this->getBreadcrumb(),
                 ));
     }
     
@@ -76,6 +85,7 @@ class PublisherController extends Controller
             'form' => $form->createView(),
             'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
             'admin_pool'    => $this->container->get('sonata.admin.pool'),
+            'breadcrumbs' => $this->getBreadcrumb(),
         ));
     }
 
@@ -118,7 +128,8 @@ class PublisherController extends Controller
 		    'publisher' => $publisher,
 		    'form' =>  $form->createView(),
                     'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
-                    'admin_pool'    => $this->container->get('sonata.admin.pool')
+                    'admin_pool'    => $this->container->get('sonata.admin.pool'),
+                    'breadcrumbs' => $this->getBreadcrumb(),
 		    ));
     }
     
@@ -156,7 +167,8 @@ class PublisherController extends Controller
 		    'publisher' => $publisher,
 		    'form' =>  $editForm->createView(),
                     'base_template' => $this->container->get('sonata.admin.pool')->getTemplate('layout'),
-                    'admin_pool'    => $this->container->get('sonata.admin.pool')
+                    'admin_pool'    => $this->container->get('sonata.admin.pool'),
+                    'breadcrumbs' => $this->getBreadcrumb(),
 		    ));
     }
     
@@ -164,4 +176,18 @@ class PublisherController extends Controller
     {
         return $this->get('knp_paginator');
     }
+    
+    function getBreadcrumb() {
+        $this->_breadcrumbs['publisher']['uri'] = $this->generateUrl('ad_manager_publisher_homepage');
+        $path_info = $this->getRequest()->getPathInfo();
+        $breadcrumbs = array();
+        foreach ($this->_breadcrumbs as $key => $breadcrumb)
+        {
+            if (preg_match("#".$key."#", $path_info)) {
+                $breadcrumbs[] = $breadcrumb;
+            }
+        }
+        return $breadcrumbs;
+    }
+    
 }

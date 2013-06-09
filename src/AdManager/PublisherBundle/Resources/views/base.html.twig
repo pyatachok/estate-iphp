@@ -1,17 +1,36 @@
 {# src/AdManager/PublisherBundle/Resources/views/base.html.twig #}
 {% extends 'IphpCoreBundle:Admin:standard_layout.html.twig' %} 
 
-
+{% block breadcrumb %}
+<li><a href="{{ path('sonata_admin_dashboard') }}"><i class=" icon-home icon-white"></i> Home</a></li>
+    <span class="divider">/</span>
+    <li>Объявления</li>
+    <span class="divider">/</span>
+    {% for breadcrumb in breadcrumbs %}
+        {% if not loop.last  %}
+            <li>
+            {% if breadcrumb.uri is not empty %}
+                <a href="{{ breadcrumb.uri }}">{{ breadcrumb.label }}</a>
+            {% else %}
+                {{ breadcrumb.label }}
+            {% endif %}
+            </li>
+            <span class="divider">/</span>
+        {% else %}
+            <li>{{ breadcrumb.label }}</li>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
 
 {% block sonata_admin_content %}
 
-{{ parent() }}
+    {{ parent() }}
 
-{% block menu_left%}
-    {% block sidebar %}
-    {% endblock %}
+    {% block menu_left%}
+        {% block sidebar %}
+        {% endblock %}
 
-{% endblock menu_left %}
+    {% endblock menu_left %}
 
 
     {%block body%}
