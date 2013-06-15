@@ -7,13 +7,13 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class TagAdmin extends Admin
+class PublisherAdmin extends Admin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
             ->add('name')
-            ->add('enabled', null, array('required' => false))
+            ->add('deleted', null, array('required' => true))
         ;
     }
 
@@ -21,7 +21,7 @@ class TagAdmin extends Admin
     {
         $datagridMapper
             ->add('name')
-            ->add('posts')
+            ->add('deleted')
         ;
     }
 
@@ -29,8 +29,8 @@ class TagAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('name')
-            ->add('slug')
-            ->add('enabled')
+            ->add('deleted')
+//            ->add('enabled')
         ;
     }
 }
