@@ -6,14 +6,25 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Component\Translation\TranslatorInterface;
+
+use Knp\Menu\FactoryInterface as MenuFactoryInterface;
+use Knp\Menu\ItemInterface as MenuItemInterface;
+
+//use Symfony\Component\Translation\Translator;
+//use Sonata\AdminBundle\Translator\Extractor\JMSTranslatorBundle\AdminExtractor;
 
 class PublisherAdmin extends Admin
 {
+    
+    protected $translationDomain = 'AdManagerPublisherBundle';
+    
+    
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
             ->add('name')
-            ->add('deleted', null, array('required' => true))
+            ->add('deleted', null, array('required' => false))
         ;
     }
 
@@ -33,4 +44,37 @@ class PublisherAdmin extends Admin
 //            ->add('enabled')
         ;
     }
+    
+    public function buildBreadcrumbs($action, MenuItemInterface $menu = null)
+    {
+
+        $menu = $this->menuFactory->createItem('root');
+        $menu = $menu->addChild(
+                $this->trans($this->getLabelTranslatorStrategy()->getLabel('dashboard', 'breadcrumb', 'link'), array(), $this->translationDomain, 'ru'),
+                array('uri' => $this->routeGenerator->generate('sonata_admin_dashboard'))
+            );
+            error_log(
+                    var_export(array(
+                        $this->getLabelTranslatorStrategy()->getLabel('dashboard', 'breadcrumb', 'link'),
+                        
+                    ), true)
+            );
+        
+        return parent::buildBreadcrumbs($action, $menu);
+    }
+    
+    public function getLabelTranslatorStrategy()
+    {
+        return new \Sonata\AdminBundle\Translator\UnderscoreLabelTranslatorStrategy();
+    }
+    
+//    public function getTranslator()
+//    {
+//        return new AdminExtractor();
+//    }
+    
+//    public function setTranslator(TranslatorInterface $translator)
+//    {
+//        $this->translator = new AdminExtractor();
+//    }
 }
