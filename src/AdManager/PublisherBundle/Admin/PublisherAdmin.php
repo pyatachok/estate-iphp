@@ -53,28 +53,27 @@ class PublisherAdmin extends Admin
                 $this->trans($this->getLabelTranslatorStrategy()->getLabel('dashboard', 'breadcrumb', 'link'), array(), $this->translationDomain, 'ru'),
                 array('uri' => $this->routeGenerator->generate('sonata_admin_dashboard'))
             );
-            error_log(
-                    var_export(array(
-                        $this->getLabelTranslatorStrategy()->getLabel('dashboard', 'breadcrumb', 'link'),
-                        
-                    ), true)
-            );
+//            error_log(
+//                    var_export(array(
+//                        $this->getLabelTranslatorStrategy()->getLabel('dashboard', 'breadcrumb', 'link'),
+//                        
+//                    ), true)
+//            );
         
         return parent::buildBreadcrumbs($action, $menu);
     }
     
-    public function getLabelTranslatorStrategy()
+    public function trans($id, array $parameters = array(), $domain = 'AdManagerPublisherBundle', $locale = null)
     {
-        return new \Sonata\AdminBundle\Translator\UnderscoreLabelTranslatorStrategy();
+        $domain = $domain ?: $this->translationDomain;
+
+        if (!$this->translator) {
+            return $id;
+        }
+//        error_log(
+//                var_export(array($id, $parameters, $domain, $locale), true)
+//        );
+        return $this->translator->trans($id, $parameters,  $this->translationDomain, $locale);
     }
     
-//    public function getTranslator()
-//    {
-//        return new AdminExtractor();
-//    }
-    
-//    public function setTranslator(TranslatorInterface $translator)
-//    {
-//        $this->translator = new AdminExtractor();
-//    }
 }

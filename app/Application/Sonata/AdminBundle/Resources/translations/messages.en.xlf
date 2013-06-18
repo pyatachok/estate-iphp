@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Symfony2 777</source>
+                <target>7777</target>
+            </trans-unit>
+            <trans-unit id="link_breadcrumb_dashboard">
+                <source>breadcrumb.link_dashboard</source>
+                <target>&#8962; 222</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_dashboard">
+                <source>breadcrumb.link_dashboard</source>
+                <target>&#8962; 222</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

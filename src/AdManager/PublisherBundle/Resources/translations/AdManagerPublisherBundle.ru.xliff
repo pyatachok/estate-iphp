@@ -2,6 +2,30 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" datatype="plaintext" original="SonataAdminBundle.en.xliff" >
         <body>
+            <trans-unit id="breadcrumb_link_publisher_list">
+                <source>breadcrumb.link_publisher_list</source>
+                <target>Список Редакторов</target>
+            </trans-unit>
+            <trans-unit id="filter_label_name">
+                <source>filter.label_name</source>
+                <target>Имя</target>
+            </trans-unit>
+            <trans-unit id="filter.label_deleted">
+                <source>filter.label_deleted</source>
+                <target>Удален</target>
+            </trans-unit>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             <trans-unit id="action_delete">
                 <source>action_delete</source>
                 <target>Удалить</target>
@@ -172,7 +196,7 @@
             </trans-unit>
             <trans-unit id="link_breadcrumb_dashboard">
                 <source>breadcrumb.link_dashboard</source>
-                <target>&#8962; 111</target>
+                <target>&#8962;</target>
             </trans-unit>
             <trans-unit id="title_delete">
                 <source>title_delete</source>

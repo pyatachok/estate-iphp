@@ -80,7 +80,7 @@
             </trans-unit>
             <trans-unit id="title_dashboard">
                 <source>title_dashboard</source>
-                <target>Dashboard</target>
+                <target>Dashboard1</target>
             </trans-unit>
             <trans-unit id="title_edit">
                 <source>title_edit</source>
