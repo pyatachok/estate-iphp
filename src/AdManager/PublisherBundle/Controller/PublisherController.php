@@ -5,6 +5,7 @@ namespace AdManager\PublisherBundle\Controller;
 use Sonata\AdminBundle\Controller\CRUDController;
 //use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 use AdManager\PublisherBundle\Entity\Publisher;
 use AdManager\PublisherBundle\Form\PublisherType;
@@ -180,6 +181,10 @@ class PublisherController extends CRUDController
 //		    ));
 //    }
     
+    
+    /*
+     * ToDo Delete
+     */
     function getBreadcrumb() {
         $this->_breadcrumbs['publisher']['uri'] = $this->generateUrl('ad_manager_publisher_homepage');
         $path_info = $this->getRequest()->getPathInfo();
@@ -192,5 +197,66 @@ class PublisherController extends CRUDController
         }
         return $breadcrumbs;
     }
+    
+    
+    /**
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException|\Symfony\Component\Security\Core\Exception\AccessDeniedException
+     *
+     * @param mixed $id
+     *
+     * @return Response|RedirectResponse
+     */
+    public function deleteAction($id)
+    {
+        $id     = $this->get('request')->get($this->admin->getIdParameter());
+        $object = $this->admin->getObject($id);
+
+        if (!$object) {
+            throw new NotFoundHttpException(sprintf('unable to find the publisher-object with id : %s', $id));
+        }
+
+        if (false === $this->admin->isGranted('DELETE', $object)) {
+            throw new AccessDeniedException();
+        }
+
+        if ($this->getRestMethod() == 'DELETE') {
+            try {
+     error_log(
+    var_export(array('delete publisher'), true)
+     );
+//                $this->admin->delete($object);
+                
+//                $em = $this->getDoctrine()->getEntityManager();
+		$object->setDeleted('1');
+//		$em->flush();
+                $this->admin->update($object);
+                
+
+                if ($this->isXmlHttpRequest()) {
+                    return $this->renderJson(array('result' => 'ok'));
+                }
+
+                $this->addFlash('sonata_flash_success', 'flash_delete_success');
+
+            } catch (ModelManagerException $e) {
+
+                if ($this->isXmlHttpRequest()) {
+                    return $this->renderJson(array('result' => 'error'));
+                }
+
+                $this->addFlash('sonata_flash_error', 'flash_delete_error');
+            }
+
+            return new RedirectResponse($this->admin->generateUrl('list'));
+        }
+
+        return $this->render($this->admin->getTemplate('delete'), array(
+            'object' => $object,
+            'action' => 'delete'
+        ));
+    }
+    
+    
+    
     
 }

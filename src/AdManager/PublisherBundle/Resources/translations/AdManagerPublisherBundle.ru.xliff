@@ -10,8 +10,24 @@
                 <source>filter.label_name</source>
                 <target>Имя</target>
             </trans-unit>
+            <trans-unit id="list.label_name">
+                <source>list.label_name</source>
+                <target>Имя</target>
+            </trans-unit>
+            <trans-unit id="form.label_name">
+                <source>form.label_name</source>
+                <target>Имя</target>
+            </trans-unit>
             <trans-unit id="filter.label_deleted">
                 <source>filter.label_deleted</source>
+                <target>Удален</target>
+            </trans-unit>
+            <trans-unit id="form.label_deleted">
+                <source>form.label_deleted</source>
+                <target>Удален</target>
+            </trans-unit>
+            <trans-unit id="list.label_deleted">
+                <source>list.label_deleted</source>
                 <target>Удален</target>
             </trans-unit>
             
