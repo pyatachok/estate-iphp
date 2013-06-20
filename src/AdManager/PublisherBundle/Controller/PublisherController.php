@@ -3,6 +3,8 @@
 namespace AdManager\PublisherBundle\Controller;
 
 use Sonata\AdminBundle\Controller\CRUDController;
+use Sonata\AdminBundle\Datagrid\ProxyQueryInterface;
+use Sonata\AdminBundle\Exception\ModelManagerException;
 //use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -221,14 +223,7 @@ class PublisherController extends CRUDController
 
         if ($this->getRestMethod() == 'DELETE') {
             try {
-     error_log(
-    var_export(array('delete publisher'), true)
-     );
-//                $this->admin->delete($object);
-                
-//                $em = $this->getDoctrine()->getEntityManager();
 		$object->setDeleted('1');
-//		$em->flush();
                 $this->admin->update($object);
                 
 
@@ -256,7 +251,39 @@ class PublisherController extends CRUDController
         ));
     }
     
+   
     
+    /**
+     * execute a batch delete
+     *
+     * @throws \Symfony\Component\Security\Core\Exception\AccessDeniedException
+     *
+     * @param \Sonata\AdminBundle\Datagrid\ProxyQueryInterface $query
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function batchActionDelete(ProxyQueryInterface $query)
+    {
+        if (false === $this->admin->isGranted('DELETE')) {
+            throw new AccessDeniedException();
+        }
+
+        try {
+            
+
+            foreach ($query->getQuery()->execute() as $pos => $object) {
+                $object->setDeleted('1');
+                $this->admin->update($object);
+                
+            }
+
+            $this->addFlash('sonata_flash_success', 'flash_batch_delete_success');
+        } catch ( ModelManagerException $e ) {
+            $this->addFlash('sonata_flash_error', 'flash_batch_delete_error');
+        }
+
+        return new RedirectResponse($this->admin->generateUrl('list', array('filter' => $this->admin->getFilterParameters())));
+    }
     
     
 }
