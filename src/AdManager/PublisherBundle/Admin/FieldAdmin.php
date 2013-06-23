@@ -14,7 +14,7 @@ use Knp\Menu\ItemInterface as MenuItemInterface;
 //use Symfony\Component\Translation\Translator;
 //use Sonata\AdminBundle\Translator\Extractor\JMSTranslatorBundle\AdminExtractor;
 
-class PublisherAdmin extends Admin
+class FieldAdmin extends Admin
 {
     
     protected $translationDomain = 'AdManagerPublisherBundle';

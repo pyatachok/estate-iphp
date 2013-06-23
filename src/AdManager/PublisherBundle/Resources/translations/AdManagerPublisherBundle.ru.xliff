@@ -32,6 +32,12 @@
             </trans-unit>
             
             
+            <trans-unit id="breadcrumb.link_field_list">
+                <source>breadcrumb.link_field_list</source>
+                <target>Список доступных полей объявлений</target>
+            </trans-unit>
+            
+            
             
             
             
