@@ -54,10 +54,10 @@ class PublisherAdmin extends Admin
                 array('uri' => $this->routeGenerator->generate('sonata_admin_dashboard'))
             );
 //            error_log(
-//                    var_export(array(
-//                        $this->getLabelTranslatorStrategy()->getLabel('dashboard', 'breadcrumb', 'link'),
-//                        
-//                    ), true)
+//                var_export(array(
+//                    $this->getLabelTranslatorStrategy()->getLabel('dashboard', 'breadcrumb', 'link'),
+//
+//                ), true)
 //            );
         
         return parent::buildBreadcrumbs($action, $menu);

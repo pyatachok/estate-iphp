@@ -142,4 +142,14 @@ class Publisher
     {
         return $this->deleted;
     }
+    
+    public function __toString()
+    {
+        if (!empty($this->name))
+        {
+            return $this->getName();
+        } else {
+            return 'Add';
+        }
+    }
 }

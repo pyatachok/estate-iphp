@@ -239,4 +239,13 @@ class Ad
         return $this->title;
     }
     
+    public function __toString()
+    {
+        if (!empty($this->title))
+        {
+            return $this->getTitle();
+        } else {
+            return 'Add';
+        }
+    }
 }
