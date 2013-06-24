@@ -36,6 +36,10 @@
                 <source>breadcrumb.link_field_list</source>
                 <target>Список доступных полей объявлений</target>
             </trans-unit>
+            <trans-unit id="form.label_related_fields">
+                <source>form.label_related_fields</source>
+                <target>Схожие поля</target>
+            </trans-unit>
             
             
             

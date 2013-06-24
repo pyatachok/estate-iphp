@@ -25,6 +25,12 @@ class FieldAdmin extends Admin
         $formMapper
             ->add('name')
             ->add('deleted', null, array('required' => false))
+            ->add('related_fields', 'sonata_type_model', array(
+                'class' => 'AdManagerPublisherBundle:Field',
+                'property' => 'name',
+                'multiple' => true,
+//                'by_reference' => false
+            ));
         ;
     }
 
