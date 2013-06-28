@@ -27,6 +27,18 @@
             <argument>AdManager\PublisherBundle\Entity\Field</argument>
             <argument>AdManagerPublisherBundle:Field</argument>
         </service>
+        <service id="sonata.admin.ad" class="AdManager\PublisherBundle\Admin\AdAdmin">
+            <tag 
+                name="sonata.admin" 
+                manager_type="orm" 
+                group="Объявления" 
+                label="Объявления"
+                label_translator_strategy="sonata.admin.label.strategy.underscore"
+            />
+            <argument />
+            <argument>AdManager\PublisherBundle\Entity\Ad</argument>
+            <argument>AdManagerPublisherBundle:Ad</argument>
+        </service>
         
         
     </services>

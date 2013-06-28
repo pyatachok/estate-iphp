@@ -41,6 +41,39 @@
                 <target>Схожие поля</target>
             </trans-unit>
             
+            <trans-unit id="breadcrumb.link_ad_list">
+                <source>breadcrumb.link_ad_list</source>
+                <target>Список объявлений</target>
+            </trans-unit>
+            <trans-unit id="list.label_creation_date">
+                <source>list.label_creation_date</source>
+                <target>Дата создания</target>
+            </trans-unit>
+            <trans-unit id="list.label_title">
+                <source>list.label_title</source>
+                <target>Заголовок</target>
+            </trans-unit>
+            <trans-unit id="filter.label_creation_date">
+                <source>filter.label_creation_date</source>
+                <target>Дата создания</target>
+            </trans-unit>
+            <trans-unit id="form.label_creation_date">
+                <source>form.label_creation_date</source>
+                <target>Дата создания</target>
+            </trans-unit>
+            <trans-unit id="filter.label_title">
+                <source>filter.label_title</source>
+                <target>Заголовок</target>
+            </trans-unit>
+            <trans-unit id="form.label_title">
+                <source>form.label_title</source>
+                <target>Заголовок</target>
+            </trans-unit>
+            <trans-unit id="form.label_publisher">
+                <source>form.label_publisher</source>
+                <target>Редактор</target>
+            </trans-unit>
+            
             
             
             
