@@ -81,11 +81,13 @@ swiftmailer:
 sonata_admin:
     title:      Real Estate
     #title_logo: /bundles/iphpcore/images/iphp.jpg
-#    templates:
+    templates:
 #        # default global templates
 #        layout: IphpCoreBundle::Admin/standard_layout.html.twig
 #        user_block: IphpCoreBundle::Admin/user_block.html.twig
 #        list_block: IphpCoreBundle::Admin/block_admin_list.html.twig
+        edit: AdManagerPublisherBundle::Admin/edit.html.twig
+        list: AdManagerPublisherBundle::Admin/list.html.twig
 #    dashboard:
 #        blocks:
 #           # display a dashboard block
