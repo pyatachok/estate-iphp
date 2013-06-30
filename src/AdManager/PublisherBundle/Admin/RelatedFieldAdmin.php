@@ -6,10 +6,10 @@ class RelatedFieldAdmin extends Admin
 {
 protected function configureFormFields(FormMapper $formMapper)
 {
-    $formMapper
-      // ->add('promotion')
-         ->add('foo')
-         ->add('value')
-    ;
+//    $formMapper
+//      // ->add('promotion')
+//         ->add('foo')
+//         ->add('value')
+//    ;
 }
 }
