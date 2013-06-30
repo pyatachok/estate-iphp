@@ -7,7 +7,26 @@
 <script src="/bundles/stfalcontinymce/vendor/tiny_mce/jquery.tinymce.js"></script>
 
 <script src="/bundles/iphpcore/js/select2/select2.js"></script>
+<script type="text/javascript"
+    src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+    </script>
 
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('.date-time-picker, #filter_creation_date_value')
+                .parent()
+                .append('<span class="add-on">' + 
+                '<i data-time-icon="icon-time" data-date-icon="icon-calendar">' +
+                '</i>' +
+                '</span>');
+        $('.date-time-picker').attr('data-format' , "yyyy-MM-dd hh:mm:ss" ).parent().datetimepicker({
+                    language: 'ru'
+                  });
+        $('#filter_creation_date_value').attr('data-format' , "yyyy-MM-dd" ).parent().datetimepicker({
+                    pickTime : false
+                  });
+    })
+    </script>
 {# для genemu#}
 {% if form is defined %}{{ form_javascript(form) }}{% endif %}
 {% endblock %}
@@ -28,7 +47,9 @@
         width: 500px
     }
 </style>
-
+    <link rel="stylesheet" type="text/css" media="screen"
+ href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+  
 
 {% endblock %}
 {% block top_bar_after_nav %}

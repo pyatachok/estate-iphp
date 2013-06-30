@@ -30,7 +30,11 @@ class AdAdmin extends Admin
     {
         $formMapper
             ->add('title')
-            ->add('creation_date')
+            ->add('creation_date', 'datetime', array(
+                'widget' => 'single_text', 
+                'format' => 'yyyy-MM-dd HH:mm:ss',
+                'attr' => array('class' => 'date-time-picker')
+                ))
             ->add('deleted', null, array('required' => false))
             ->add('publisher', 'sonata_type_model', array(
                 'class' => 'AdManagerPublisherBundle:Publisher',
