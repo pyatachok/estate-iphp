@@ -208,3 +208,12 @@ file that was distributed with this source code.
         </form>
     {% endif %}
 {% endblock %}
+        
+{% block javascripts %}
+   {{ parent() }}
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $('#filter_creation_date_value').datepicker( { dateFormat: "yy-mm-dd" });
+        })
+        </script>
+{% endblock %}
