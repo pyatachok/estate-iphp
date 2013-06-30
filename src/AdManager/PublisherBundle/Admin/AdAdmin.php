@@ -39,7 +39,7 @@ class AdAdmin extends Admin
     {
         $datagridMapper
             ->add('title')
-            ->add('creation_date')
+            ->add('creation_date', 'doctrine_orm_string')
             ->add('deleted')
         ;
     }
