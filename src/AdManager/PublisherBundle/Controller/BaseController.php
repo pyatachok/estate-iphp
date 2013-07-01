@@ -103,4 +103,6 @@ abstract class BaseController extends CRUDController
         return new RedirectResponse($this->admin->generateUrl('list', array('filter' => $this->admin->getFilterParameters())));
     }
     
+    
+    
 }

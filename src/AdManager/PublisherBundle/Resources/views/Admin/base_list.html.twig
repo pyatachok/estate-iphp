@@ -60,7 +60,8 @@ file that was distributed with this source code.
                 {% block table_body %}
                     <tbody>
                         {% for object in admin.datagrid.results %}
-                            <tr>
+                            <tr class="{% if object.deleted is defined and object.deleted %} deleted-row {% endif %}">
+                                
                                 {% include admin.getTemplate('inner_list_row') %}
                             </tr>
                         {% endfor %}
@@ -214,4 +215,11 @@ file that was distributed with this source code.
         <script type="text/javascript">
 
         </script>
+{% endblock %}
+        
+{% block stylesheets %}
+    {{ parent() }}
+    <style type="text/css">
+            .deleted-row { background-color: wheat; }
+    </style>
 {% endblock %}

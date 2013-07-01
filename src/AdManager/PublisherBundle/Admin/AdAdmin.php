@@ -58,7 +58,7 @@ class AdAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('title')
-            ->add('creation_date')
+            ->add('creation_date', 'datetime')
             ->add('deleted')
 //            ->add('enabled')
         ;
@@ -86,6 +86,25 @@ class AdAdmin extends Admin
         return $this->translator->trans($id, $parameters,  $this->translationDomain, $locale);
     }
     
+    
+    public function getTemplate($name)
+    {
+        switch ($name)
+        {
+            case 'inner_list_row':
+                $temp = 'AdManagerPublisherBundle:Admin:list_inner_row.html.twig';
 
+                break;
+            case 'base_list_field':
+                $temp = 'AdManagerPublisherBundle:Admin:base_list_field.html.twig';
+                break;
+
+            default:
+                $temp = parent::getTemplate($name);
+                break;
+        }
+
+                return $temp;
+    }
     
 }
